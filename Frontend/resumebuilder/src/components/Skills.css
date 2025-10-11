@@ -1,0 +1,120 @@
+.skills-container {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #0f0e0e;
+  padding: 20px;
+  border-radius: 8px;
+  color: #e0e6ef;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.skills-heading {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #f2eded;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: #dfdcdc;
+  margin-bottom: 15px;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.skill-tag {
+  background: #656569;
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #f5f1f1;
+  transition: background 0.2s;
+}
+
+.skill-tag:hover {
+  background: #e0e6ef;
+}
+
+.skill-level {
+  margin-left: 6px;
+  font-size: 0.8rem;
+  color: #929090;
+}
+
+.remove-btn {
+  margin-left: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #ff4d4f;
+}
+
+.add-skill {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.skill-input {
+  flex: 1;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #232323;
+}
+
+.skill-select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.add-btn {
+  background: #272728;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.add-btn:hover {
+  background: #2533d3;
+}
+
+.pro-tip h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.pro-tip p {
+  font-size: 0.85rem;
+  color: #f1e9e9;
+}
+
+
+/* Skill tags */
+.toggle-btn {
+  background: #2d2d2d;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-bottom: 12px;
+  transition: background 0.2s;
+}
+
+.toggle-btn:hover {
+  background: #3d34e3;
+}

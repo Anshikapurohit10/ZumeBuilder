@@ -1,0 +1,157 @@
+.personal-details {
+  background-color: #111;
+  color: #c7b7b7;
+  padding: 2rem;
+  border-radius: 10px;
+  height: 100%;
+  overflow-y: auto;
+  font-family: "Poppins", sans-serif;
+}
+
+.personal-details h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ede5e5;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 0.3rem;
+}
+
+.form-group input {
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #1e1e1e;
+  color: #f1e7e7;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.form-group input:focus {
+  background-color: #2b2b2b;
+  border: 1px solid #5a5a5a;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+button.next-btn {
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.2rem;
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button.next-btn:hover {
+  background-color: #5848e3;
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+  }
+}
+
+.links-section {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.links-section label {
+  font-weight: 600;
+  color: #f9f2f2;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.link-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #2b2b2b;
+}
+
+.link-input-row input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s ease;
+  background-color: #1e1e1e;
+  color: #f2ecec;
+}
+
+.link-input-row input:focus {
+  border-color: #539ce6;
+  box-shadow: 0 0 0 2px rgba(83, 156, 230, 0.15);
+}
+
+/* Add link button */
+.add-link-btn {
+  background-color: #6c63ff;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  width: fit-content;
+  transition: 0.2s ease;
+}
+
+.add-link-btn:hover {
+  background-color: #3b7cd6;
+}
+
+/* Remove link button (icon-style) */
+.remove-link-btn {
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s ease;
+}
+
+.remove-link-btn::before {
+  content: "✕";
+}
+
+.remove-link-btn:hover {
+  background-color: #d32f2f;
+}

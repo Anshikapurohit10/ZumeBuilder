@@ -1,0 +1,76 @@
+.navbar {
+  background-color: #1e1e2f;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 2rem;
+  position: relative;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.upgrade-btn {
+  background-color: #7b6df3;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.upgrade-btn:hover {
+  background-color: #6754e2;
+}
+
+.profile-menu {
+  position: relative;
+  margin-left: 1.5rem;
+  display: inline-block;
+}
+
+.profile-icon {
+  cursor: pointer;
+  color: white;
+  transition: 0.3s;
+}
+
+.profile-icon:hover {
+  color: #a7a7ff;
+}
+
+.dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: white;
+  color: #333;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  list-style: none;
+  padding: 0.5rem 0;
+  width: 180px;
+  z-index: 10;
+}
+
+.dropdown li {
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.3s;
+}
+
+.dropdown li:hover {
+  background-color: #f2f2f2;
+}
+
+.dropdown .signout {
+  border-top: 1px solid #ddd;
+  color: #d9534f;
+}
