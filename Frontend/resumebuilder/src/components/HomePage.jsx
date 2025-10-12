@@ -1,13 +1,18 @@
 import React, {useState} from 'react'
+import resume1 from "../assets/Blue Simple Professional CV Resume - Copy (2).png";
+import resume2 from "../assets/Blue Simple Professional CV Resume (2).png";
+import resume3 from "../assets/Blue Simple Professional CV Resume (3).png";
+import illustration from "../assets/Gemini_Generated_Image_unexmmunexmmunex.png";
+import step1 from "../assets/Young man and woman searching.png";
+import step2 from "../assets/standardized test as method of assessment.png";
+import step3 from "../assets/Programming workflow on computer screen.png";
+import footerLogo from "../assets/zz.png";
+
 import "./home.css"
 import { Link , useNavigate} from "react-router-dom";
 const HomePage = () => {
-  const images = [
-    "src/assets/Blue Simple Professional CV Resume - Copy (2).png",
-    "src/assets/Blue Simple Professional CV Resume (2).png",
-    "src/assets/Blue Simple Professional CV Resume (3).png"
-  ];
 
+const images = [resume1, resume2, resume3];
   const [current, setCurrent] = useState(0);
 
   const nextSlide = () => {
@@ -39,9 +44,7 @@ const HomePage = () => {
     </button>
   </div>
   <div className="hero-right">
-    <img src="src/assets/Gemini_Generated_Image_unexmmunexmmunex.png" 
-      alt="resume illustration" 
-    />
+    <img src={illustration} alt="resume illustration" />
   </div>
 </div>
 <div className="slider">
@@ -64,13 +67,13 @@ const HomePage = () => {
    <div className='steps'>
     <h1>Effortlessly make a <span className="light">job-worthy </span> resume in three easy steps!</h1>
      <h2>STEP-1  <span className="light">Select resume template </span></h2>
-     <img src="src/assets/Young man and woman searching.png" alt="hello" />
+      <img src={step1} alt="Step 1" />
       <h3>Sign up to select your favourite resume template.</h3>
-     <h2>STEP-2  <span className="light">Fill your details </span></h2>
-     <img src="src/assets/standardized test as method of assessment.png" alt="hii" />
+      <h2>STEP-2  <span className="light">Fill your details </span></h2>
+      <img src={step2} alt="Step 2" />
       <h3>Our templates will automatically present your details in beautiful and ATS friendly formats</h3>
      <h2>STEP-3  <span className="light">Download your resume</span></h2>
-     <img src="src/assets/Programming workflow on computer screen.png" alt="" />
+    <img src={step3} alt="Step 3" />
      <h3>Once you are happy with your resume, create a shareable link for free or download it in pdf format.</h3>
    </div>
   
@@ -80,7 +83,7 @@ const HomePage = () => {
   <footer className="footer-container">
     <div className="footer-top">
       <div className="footer-logo">
-        <img src="src\assets\zz.png" alt="GoResume" />
+       <img src={footerLogo} alt="GoResume" />
         <h2>ZUME...</h2>
       </div>
 
