@@ -1,10 +1,15 @@
-import axios from "axios";
+import API from "./api"; // import your axios instance
 
-const API = axios.create({
-  baseURL:
-    import.meta.env.MODE === "production"
-      ? "https://zume-lgu7.onrender.com/api/"
-      : "http://localhost:5000/api/",
-});
+const authAPI = {
+  signup: async (userData) => {
+    const res = await API.post("auth/signup", userData);
+    return res.data;
+  },
 
-export default API;
+  login: async (credentials) => {
+    const res = await API.post("auth/login", credentials);
+    return res.data;
+  },
+};
+
+export default authAPI;
