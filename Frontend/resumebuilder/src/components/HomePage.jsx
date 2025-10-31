@@ -28,7 +28,7 @@ const images = [resume1, resume2, resume3];
     <div className='logo'>ZUME</div>
     <ul className='nav-link'> 
   <li><Link to='/'>Home</Link></li>
-  <li><Link to='/blogs'>Blogs</Link></li> 
+  <li><Link to='/feedback'>Feedback</Link></li> 
   <li><Link to='/login'>Login</Link></li>
   <li><Link to='/signup'>Sign Up</Link></li>
 </ul>
