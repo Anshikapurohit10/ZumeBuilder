@@ -1,6 +1,6 @@
 import express from "express";
 import multer from "multer";
-import Feedback from "../models/Feedback.js";
+import Feedback from "../models/feedback.js";
 
 const router = express.Router();
 
