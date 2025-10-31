@@ -9,17 +9,15 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const API_URL = import.meta.env.VITE_API_URL; // ✅ added line
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
-        email,
-        password,
-      });
+      const res = await axios.post(`${API_URL}/auth/login`, { email, password });
 
       localStorage.setItem("token", res.data.token);
-       localStorage.setItem("userName", res.data.user.name); // 👈 Save the name
+      localStorage.setItem("userName", res.data.user.name);
 
       alert("Login successful!");
       navigate("/dashboard");
