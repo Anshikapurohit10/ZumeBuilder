@@ -1,0 +1,60 @@
+.feedback-container {
+  width: 70%;
+  margin: 30px auto;
+  font-family: "Poppins", sans-serif;
+}
+
+.feedback-form {
+  background: #242323;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.username-input,
+textarea {
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #242323;
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.post-card {
+  background: #242323;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.post-card h3 {
+  margin: 0;
+  color: #0073b1;
+}
+
+.post-card img {
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.delete-btn {
+  background: transparent;
+  color: rgb(240, 231, 231);
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.likes {
+  font-size: 18px;
+  margin-top: 8px;
+}
