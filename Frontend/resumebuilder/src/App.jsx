@@ -6,7 +6,8 @@ import Signup from "./components/Signup"
 import Dashboard from "./components/Dashboard";
 import Resume from "./components/ResumeBuilder";
 import CompleteResume from "./components/CompleteResume";
-import Blogs from "./components/Blogs";
+
+import Feedback from "./components/feedback";
 function App() {
 
 
@@ -19,7 +20,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
          <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/ResumeBuilder" element={<Resume />} />
-          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/feedback" element={<Feedback />} />
          <Route path="/complete-resume" element={<CompleteResume />} />
 
       </Routes>
@@ -33,3 +34,4 @@ function App() {
 }
 
 export default App
+
