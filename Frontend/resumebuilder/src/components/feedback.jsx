@@ -73,7 +73,7 @@ const handleLike = async (id) => {
           <div key={fb._id} className="post-card">
             <h3>{fb.username}</h3>
             <p>{fb.text}</p>
-        {fb.image && <img src={`http://localhost:5000${fb.image}`} alt="Feedback" />}
+        {fb.image && <img src={`https://zume-lgu7.onrender.com/${fb.image}`} alt="Feedback" />}
  <p
               className="likes"
               onClick={() => handleLike(fb._id)} // 👈 click to like
