@@ -1,36 +1,34 @@
-
 import express from "express";
-
-import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
+import feedbackRoutes from "./routes/feedbackRoutes.js";
 
-// Load environment variables from .env file
+// Load environment variables
 dotenv.config();
 
-const app = express();
+// Connect to MongoDB
+connectDB();
 
+const app = express();
 
 // Middleware
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ MongoDB Connected"))
-  .catch((err) => console.error("❌ MongoDB connection error:", err));
-// Connect to MongoDB
-connectDB();
-
 // Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/feedback", feedbackRoutes);
+app.use("/uploads", express.static("uploads"));
+
+
+// Root route for testing
+app.get("/", (req, res) => {
+  res.send("✅ Backend is running on Render 🚀");
+});
 
 // Start server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
-app.get('/', (req, res) => {
-  res.send('Backend is running 🚀');
-});
+app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+
