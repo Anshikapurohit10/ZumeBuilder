@@ -1,29 +1,30 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./Signup.css";
+import "./Login.css";
 
-export default function Signup() {
-  const [name, setName] = useState("");
+export default function Login() {
+  console.log("Environment Mode:", import.meta.env.MODE);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const API_URL = import.meta.env.VITE_API_URL; // ✅ added line
 
-  const handleSignup = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/auth/signup", {
-        name,
-        email,
-        password,
-      });
-      alert("Signup successful! Please login.");
-      navigate("/login");
+      const res = await axios.post(`${API_URL}/auth/login`, { email, password });
+
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("userName", res.data.user.name);
+
+      alert("Login successful!");
+      navigate("/dashboard");
     } catch (error) {
-      alert(error.response?.data?.msg || "Signup failed!");
+      alert(error.response?.data?.msg || "Login failed!");
     }
   };
-
   return (
     <div className="signup-page">
       <div className="signup-left">
