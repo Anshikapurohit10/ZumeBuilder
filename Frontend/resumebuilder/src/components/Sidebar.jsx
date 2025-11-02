@@ -9,6 +9,8 @@ const Sidebar = ({ step, setStep }) => {
     "Skills",
     "Experience",
     "Projects",
+    "Certificates",
+      "References"
   ];
 
   return (
