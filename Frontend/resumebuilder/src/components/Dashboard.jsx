@@ -4,10 +4,9 @@ import "./Dashboard.css";
 import Navbar from "./Navbar";
 const Dashboard = () => {
   const navigate = useNavigate();
-  const userName = localStorage.getItem("userName") || "User"; // 👈 name from signup/login
-
+  const userName = localStorage.getItem("userName") || "User"; 
   const handleCreateResume = () => {
-    navigate("/ResumeBuilder"); // 👈 route to your resume page
+    navigate("/ResumeBuilder"); 
   };
 
   return (
@@ -27,6 +26,10 @@ const Dashboard = () => {
         <button className="tab active">Resume</button>
       
       </div>
+     <div className="tabs">
+        <button className="tab active">portfolio</button>
+      
+      </div>
 
       <div className="content">
         <img
@@ -38,7 +41,10 @@ const Dashboard = () => {
           Custom-built, amazing resumes. Empower your job search in just a few clicks!
         </p>
         <button className="create-btn" onClick={handleCreateResume}>
-          + Create New
+          + Create resume
+        </button>
+        <button className="create-btns" onClick={handleCreateResume}>
+          + Create portfolio
         </button>
       </div>
     </div>
@@ -47,3 +53,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
