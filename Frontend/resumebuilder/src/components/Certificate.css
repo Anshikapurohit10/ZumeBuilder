@@ -1,0 +1,143 @@
+/* ===== Certificate Section Styling ===== */
+
+.certificate-form {
+  background-color: #212121;
+  padding: 1.8rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 750px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: #e0dbdb;
+  transition: all 0.3s ease-in-out;
+}
+/* ===== Certificate Input Card ===== */
+.certificate-entry {
+  background-color: #f9fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  transition: all 0.3s ease;
+}
+
+.certificate-entry:hover {
+  border-color: #6366f1;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.15);
+}
+
+/* ===== Inputs (Dark Mode Style) ===== */
+.certificate-entry input {
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background-color: #393838;          /* 🔥 Black background */
+  color: #fff;                     /* White text */
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.certificate-entry input::placeholder {
+  color: #e8e4e4;                     /* Soft grey placeholder */
+}
+
+.certificate-entry input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 6px rgba(79, 70, 229, 0.4);
+}
+
+.certificate-form h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #d2cccc;
+  border-bottom: 3px solid #4f46e5;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* ===== Certificate Input Card ===== */
+.certificate-entry {
+  background-color: #272728;
+  border: 1px solid #414141;
+  border-radius: 14px;
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  transition: all 0.3s ease;
+}
+
+.certificate-entry:hover {
+  border-color: #6366f1;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.15);
+}
+
+/* ===== Inputs ===== */
+.certificate-entry input {
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #333435;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.certificate-entry input:focus {
+  border-color: #52525e;
+  box-shadow: 0 0 4px rgba(79, 70, 229, 0.3);
+}
+
+/* ===== Buttons ===== */
+.add-btn,
+.remove-btn {
+  align-self: flex-start;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-btn {
+  background-color: #4f46e5;
+  color: #fff;
+}
+
+.add-btn:hover {
+  background-color: #4338ca;
+  transform: translateY(-2px);
+}
+
+.remove-btn {
+  background-color: #ef4444;
+  color: white;
+}
+
+.remove-btn:hover {
+  background-color: #dc2626;
+  transform: translateY(-2px);
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 600px) {
+  .certificate-form {
+    padding: 1rem;
+  }
+
+  .certificate-entry {
+    padding: 0.8rem;
+  }
+
+  .add-btn,
+  .remove-btn {
+    width: 100%;
+  }
+}
