@@ -1,22 +1,26 @@
 
 .complete-resume-container {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   min-height: 100vh;
-  background: #f7f7f7;
+  background-color: #121212; /* soft light gray background */
   padding: 20px;
-  font-family: "Poppins", sans-serif;
 }
 
 /* Header layout */
 .resume-header-top {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  position: relative;
-  padding: 15px 30px;
-  background: #fff;
+  justify-content: space-between;
+  background: #1c1c1c;
+  color: #fff;
+  padding: 12px 20px;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
 /* Center title */
@@ -57,7 +61,7 @@
 
 .back-btn:hover,
 .download-btn:hover {
-  background: #333;
+  background: #0c0c0c;
 }
 
 /* Resume scaling */
@@ -65,4 +69,25 @@
   transform: scale(0.85);
   transform-origin: top center;
   margin-top: 30px;
+}
+.resume-preview-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  width: 100%;
+  max-width: 900px;   /* ✅ set your resume width */
+  min-height: 1100px; /* ✅ page-like height */
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .resume-preview-wrapper {
+    padding: 20px;
+    max-width: 95%;
+  }
 }
