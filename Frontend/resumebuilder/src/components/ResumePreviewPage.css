@@ -1,0 +1,94 @@
+.resume-preview-page {
+  position: relative;
+  background: #f8f9fb;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.preview-area {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.template-btn-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.change-template-btn {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.change-template-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Modal */
+.template-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.template-modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  text-align: center;
+  width: 60%;
+  max-width: 700px;
+}
+
+.template-options {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.template-card {
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 180px;
+  transition: all 0.3s ease;
+}
+
+.template-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.template-card:hover {
+  border-color: #007bff;
+  transform: scale(1.03);
+}
+
+.close-modal-btn {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
