@@ -1,7 +1,7 @@
+
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import ResumePreview from "./ResumePreview";
 import PersonalDetails from "./PersonalDetails";
 import ProfessionalSummary from "./ProfessionalSummary";
 import Education from "./Education";
@@ -10,31 +10,88 @@ import Experience from "./Experience";
 import Certificate from "./Certificate";
 import Reference from "./Reference";
 import Projects from "./Projects";
+import ResumeTemplate1 from "./ResumePreview";
+import ResumeTemplate2 from "./ResumeTemplate2";
 import "./ResumeBuilder.css";
-
+import Celebration from "./Celebration";
 const ResumeBuilder = () => {
   const [step, setStep] = useState(1);
-  const navigate = useNavigate();
-
+  const [selectedTemplate] = useState(
+    localStorage.getItem("selectedTemplate") || "template1"
+  );
+const [showConfetti, setShowConfetti] = useState(false);
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    city: "",
-    country: "",
-    jobTitle: "",
-    summary: "",
+    personalDetails: {},
+    professionalSummary: "",
     education: [],
     skills: [],
     experience: [],
     projects: [],
     certificates: [],
-     references: [],
-
+    reference: [],
   });
 
-  // ✅ Update handler works for both inputs and manual updates
+  const navigate = useNavigate();
+
+  const selectedField = localStorage.getItem("selectedField") || "OTHER";
+  console.log("Selected Field:", selectedField);
+
+  const fieldSections = {
+    "IT JOBS": [
+      "PersonalDetails",
+      "ProfessionalSummary",
+      "Education",
+      "Skills",
+      "Experience",
+      "Projects",
+      "Certificates",
+    ],
+    "NON-IT JOBS": [
+      "PersonalDetails",
+      "ProfessionalSummary",
+      "Education",
+      "Skills",
+      "Experience",
+      "Certificates",
+      "Reference",
+    ],
+    "SPORTS": [
+      "PersonalDetails",
+      "ProfessionalSummary",
+      "Education",
+      "Certificates",
+      "Experience",
+      "Reference",
+    ],
+    "TEACHING": [
+      "PersonalDetails",
+      "ProfessionalSummary",
+      "Education",
+      "Certificates",
+      "Reference",
+    ],
+    "MEDICAL": [
+      "PersonalDetails",
+      "ProfessionalSummary",
+      "Education",
+      "Certificates",
+      "Experience",
+      "Reference",
+    ],
+    "OTHER": [
+      "PersonalDetails",
+      "ProfessionalSummary",
+      "Education",
+      "Skills",
+      "Experience",
+      "Projects",
+      "Certificates",
+      "Reference",
+    ],
+  };
+
+  const activeSections = fieldSections[selectedField];
+
   const handleChange = (eOrName, value) => {
     if (eOrName?.target) {
       const { name, value } = eOrName.target;
@@ -44,7 +101,6 @@ const ResumeBuilder = () => {
     }
   };
 
-  // ✅ Load saved data if available
   useEffect(() => {
     const savedData = localStorage.getItem("resumeFormData");
     if (savedData) {
@@ -53,48 +109,73 @@ const ResumeBuilder = () => {
     }
   }, []);
 
+  const renderStep = () => {
+    const section = activeSections[step - 1];
+    switch (section) {
+      case "PersonalDetails":
+        return <PersonalDetails formData={formData} handleChange={handleChange} />;
+      case "ProfessionalSummary":
+        return <ProfessionalSummary formData={formData} handleChange={handleChange} />;
+      case "Education":
+        return <Education formData={formData} handleChange={handleChange} />;
+      case "Skills":
+        return <Skills formData={formData} handleChange={handleChange} />;
+      case "Experience":
+        return <Experience formData={formData} handleChange={handleChange} />;
+      case "Projects":
+        return <Projects formData={formData} handleChange={handleChange} />;
+      case "Certificates":
+        return <Certificate formData={formData} handleChange={handleChange} />;
+      case "Reference":
+        return <Reference formData={formData} handleChange={handleChange} />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="resume-builder">
-      <Sidebar step={step} setStep={setStep} />
+      <Sidebar step={step} setStep={setStep} activeSections={activeSections} />
 
-      <div className="resume-content">
-        {step === 1 && (
-          <PersonalDetails formData={formData} handleChange={handleChange} />
-        )}
-        {step === 2 && (
-          <ProfessionalSummary formData={formData} handleChange={handleChange} />
-        )}
-        {step === 3 && (
-          <Education formData={formData} handleChange={handleChange} />
-        )}
-        {step === 4 && (
-          <Skills formData={formData} handleChange={handleChange} />
-        )}
-        {step === 5 && (
-          <Experience formData={formData} handleChange={handleChange} />
-        )}
-        {step === 6 && (
-          <Projects formData={formData} handleChange={handleChange} />
-        )}
-        {step === 7 && ( 
-          <Certificate formData={formData} handleChange={handleChange} />
-        )}
-        {step === 8 && (
-  <Reference formData={formData} handleChange={handleChange} />
-)}
+      <div className="resume-content">{renderStep()}</div>
 
+      <div className="resume-preview-container">
+        {selectedTemplate === "template1" && <ResumeTemplate1 formData={formData} />}
+        {selectedTemplate === "template2" && <ResumeTemplate2 formData={formData} />}
+
+       <button
+  onClick={() => {
+    localStorage.setItem("resumeFormData", JSON.stringify(formData));
+    navigate("/change-template");
+  }}
+  className="change-template-btn"
+>
+  Change Template
+</button>
+<button
+  className="view-resume-btn"
+  onClick={() => {
+    setShowConfetti(true); // show confetti
+    setTimeout(() => {
+      localStorage.setItem("resumeFormData", JSON.stringify(formData));
+      navigate("/complete-resume", {
+        state: { formData, selectedTemplate },
+      });
+    }, 2000); // 2 seconds to enjoy confetti
+  }}
+>
+  View Full Resume
+</button>
+
+<Celebration show={showConfetti} />
+
+
+        
       </div>
-
-      <ResumePreview formData={formData} />
-
-      <button
-        className="view-resume-btn"
-        onClick={() => navigate("/complete-resume", { state: { formData } })}
-      >
-        View Full Resume
-      </button>
+      
     </div>
   );
 };
 
 export default ResumeBuilder;
+
