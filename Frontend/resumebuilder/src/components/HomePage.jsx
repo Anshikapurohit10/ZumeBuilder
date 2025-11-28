@@ -25,7 +25,7 @@ const images = [resume1, resume2, resume3];
   return (
    <>
    <nav  className='header'>
-    <div className='logo'>ZUME</div>
+    <div className='logo-p'>ZUME</div>
     <ul className='nav-link'> 
   <li><Link to='/'>Home</Link></li>
   <li><Link to='/feedback'>Feedback</Link></li> 
@@ -36,7 +36,7 @@ const images = [resume1, resume2, resume3];
 <div className="hero">
   <div className="hero-left">
     <h1>
-      Make your <span className="highlight">resume</span> as impressive as your <span className="highlight">skills.</span>
+      Make your <span className="highlight-Pt">resume</span> as impressive as your <span className="highlight-Pt">skills.</span>
     </h1>
     <h2>Create unlimited, ATS-friendly resumes that recruiters love.</h2>
      <button className="button" onClick={() => navigate("/signup")}>
