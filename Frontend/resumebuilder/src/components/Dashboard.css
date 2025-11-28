@@ -1,3 +1,4 @@
+
 .dashboard-container {
   display: flex;
   flex-direction: column;
@@ -7,11 +8,30 @@
   text-align: center;
   min-height: 200vh;
   background-color: #f9fafc;
+  color: #000;
 }
 
 .dashboard-header h2 {
   font-size: 50px;
   color: #222;
+}
+.field-btn.selected{
+  color:black ;
+
+}
+.back-button {
+  position: fixed;
+  top: 80px; /* adjust vertical position */
+  left: 30px;
+  color: #f9f9f9;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  transition: color 0.2s;
+  z-index: 999;
 }
 
 .username {
@@ -65,6 +85,7 @@ display: flex;
   width: 100%;
 }
 
+
 .resume-image {
   width: 200px;
   margin-bottom: 1rem;
@@ -105,6 +126,20 @@ display: flex;
   background-color: #573de2;
 
 }
+.field-selection {
+  
+  transform: translateY(20px);
+  animation: slideIn 0.5s ease forwards;
+  color: #222;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   .dashboard-header h2 {
@@ -118,4 +153,49 @@ display: flex;
   .create-btn {
     width: 100%;
   }
+}
+.field-selection {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  border-radius: 15px;
+  padding: 20px;
+  width: 60%;
+  margin: 20px auto;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.field-selection h3 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.field-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.field-btn {
+  background-color:#6a4ff5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.field-btn:hover {
+  background-color: #624ee2;
+}
+
+.field-btn.selected {
+  background-color: #28a745;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
