@@ -2,6 +2,7 @@
 import React, { useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ResumePreview from "./ResumePreview";
+import ResumeTemplate2 from "./ResumeTemplate2";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import "./CompleteResume.css";
@@ -12,7 +13,7 @@ const CompleteResume = () => {
   const resumeRef = useRef();
 
   const formData = location.state?.formData || {};
-
+const selectedTemplate = location.state?.selectedTemplate || "template1";
   const handleDownloadPDF = async () => {
     const element = resumeRef.current;
 
@@ -50,6 +51,11 @@ const CompleteResume = () => {
     localStorage.setItem("resumeFormData", JSON.stringify(formData));
     navigate("/resumeBuilder");
   };
+const handleATS = () => {
+  navigate("/ATS", {
+    state: { formData }
+  });
+};
 
   return (
     <div className="complete-resume-container">
@@ -64,11 +70,16 @@ const CompleteResume = () => {
         <button className="download-btn" onClick={handleDownloadPDF}>
           ⬇️ Download Resume
         </button>
+        
+        <button className="download-btn" onClick={handleATS}>
+          ⬇️ check your ats score
+        </button>
       </div>
 
       {/* Actual resume preview */}
       <div ref={resumeRef} className="resume-preview-wrapper">
-        <ResumePreview formData={formData} />
+        {selectedTemplate === "template1" && <ResumePreview formData={formData} />}
+        {selectedTemplate === "template2" && <ResumeTemplate2 formData={formData} />}
       </div>
     </div>
   );
