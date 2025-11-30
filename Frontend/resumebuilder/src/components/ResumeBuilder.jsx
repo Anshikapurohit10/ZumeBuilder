@@ -167,7 +167,7 @@ const [showConfetti, setShowConfetti] = useState(false);
   View Full Resume
 </button>
 
-<Celebration show={showConfetti} />
+{/* <Celebration show={showConfetti} /> */}
 
 
         
