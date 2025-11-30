@@ -13,7 +13,7 @@ import Projects from "./Projects";
 import ResumeTemplate1 from "./ResumePreview";
 import ResumeTemplate2 from "./ResumeTemplate2";
 import "./ResumeBuilder.css";
-import Celebration from "./Celebration";
+// import Celebration from "./Celebration";
 const ResumeBuilder = () => {
   const [step, setStep] = useState(1);
   const [selectedTemplate] = useState(
