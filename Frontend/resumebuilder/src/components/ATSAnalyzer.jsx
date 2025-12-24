@@ -469,6 +469,8 @@ const styles = {
     width: "100%",
     height: "150px",
     padding: "10px",
+    background: "#ffffff",
+     color: "#111827",
     borderRadius: "8px",
     marginBottom: "20px",
   
