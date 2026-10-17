@@ -1,3 +1,4 @@
+
 import React from "react";
 import "./ResumePreview.css";
 
@@ -15,181 +16,225 @@ const ResumePreview = ({ formData }) => {
     experience = [],
     projects = [],
     certificates = [],
-  
   } = formData;
+
+  const fullName = [firstName, lastName].filter(Boolean).join(" ");
+
+  const formatLink = (link) =>
+    link.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
 
   return (
     <div className="resume-preview-container">
       <div className="preview-content">
-        {/* ===== HEADER ===== */}
-        <div className="resume-header">
-          <h1>
-            {firstName || lastName ? `${firstName} ${lastName}` : "Your Name"}
-          </h1>
-          <p>
-            {jobTitle && <p>{jobTitle}</p>}
-            <br />
-            {email || "youremail@example.com"} | {phone || "Your Phone"} |{" "}
-            {city ? `${city}` : "Your Location"}
-          </p>
+        {/* HEADER */}
+        <header className="resume-header">
+          <h1>{fullName || "Your Name"}</h1>
 
-          {/* Personal Links */}
-          {formData.links && formData.links.length > 0 && (
-            <p className="personal-links">
-              {formData.links.map((link, i) => (
-                <span key={i}>
-                  <a href={link} target="_blank" rel="noopener noreferrer">
-                    {link}
-                  </a>
-                  {i !== formData.links.length - 1 && " | "}
-                </span>
-              ))}
-            </p>
-          )}
-        </div>
+          {jobTitle && <div className="resume-job-title">{jobTitle}</div>}
 
-        {/* ===== SUMMARY ===== */}
-        {summary && (
-          <div className="resume-section">
-            <h2>Professional Summary</h2>
-            <p>{summary || "Write your professional summary here..."}</p>
+          <div className="resume-contact">
+            {email && <span>{email}</span>}
+            {email && (phone || city || formData.links?.length > 0) && (
+              <span className="contact-separator">|</span>
+            )}
+            {formData.links?.map((link, i) => (
+              <React.Fragment key={i}>
+                <a href={link} target="_blank" rel="noreferrer">
+                  {formatLink(link)}
+                </a>
+                <span className="contact-separator">|</span>
+              </React.Fragment>
+            ))}
+            {phone && <span>{phone}</span>}
+            {phone && city && <span className="contact-separator">|</span>}
+            {city && <span>{city}</span>}
           </div>
+        </header>
+
+        {/* CAREER OBJECTIVE */}
+        {summary && (
+          <section className="resume-section">
+            <h2>Career Objective</h2>
+            <p className="summary-text">{summary}</p>
+          </section>
         )}
 
-        {/* ===== EDUCATION ===== */}
+        {/* EDUCATION */}
         {education.length > 0 && (
-          <div className="resume-section education-preview-section">
-            <h2 className="section-title">Education</h2>
-            <div className="section-divider"></div>
+          <section className="resume-section">
+            <h2>Education</h2>
+
             {education.map((edu, i) => (
               <div className="education-entry" key={i}>
-                <div className="edu-line-1">
-                  <span className="edu-school">{edu.school}</span>
-                  <span className="edu-cgpa">CGPA: {edu.cgpa}</span>
+                <div className="entry-topline">
+                  <strong>{edu.school}</strong>
+                  <span>
+                    {[edu.startYear, edu.endYear].filter(Boolean).join("-")}
+                    {edu.startYear || edu.endYear ? " | " : ""}
+                    {edu.status || ""}
+                  </span>
                 </div>
 
-                <div className="edu-line-2">
-                  <span className="edu-degree">
-                    {edu.degree} {edu.branch}
+                <div className="entry-bottomline">
+                  <span>
+                    {[edu.degree, edu.branch].filter(Boolean).join(" ")}
                   </span>
-                  <span className="edu-dates">
-                    {edu.startYear} - {edu.endYear}
-                  </span>
+                  {edu.cgpa && (
+                    <strong>
+                      {String(edu.cgpa).toLowerCase().includes("cgpa")
+                        ? edu.cgpa
+                        : `CGPA: ${edu.cgpa}`}
+                    </strong>
+                  )}
                 </div>
               </div>
             ))}
-          </div>
+          </section>
         )}
 
-        {/* ===== SKILLS ===== */}
+        {/* SKILLS */}
         {skills.length > 0 && (
-          <div className="resume-section skills-preview">
+          <section className="resume-section">
             <h2>Skills</h2>
-            <ul>
+
+            <div className="skills-content">
               {skills.map((skill, i) => (
-                <li key={i} className="skill-item-row">
-                  <span className="skill-name">{skill.name}</span>
-                  {skill.level && (
-                    <span className="skill-level-right">{skill.level}</span>
-                  )}
-                </li>
+                <div className="skill-row" key={i}>
+                  <strong>{skill.category || skill.name}:</strong>{" "}
+                  {skill.category
+                    ? skill.name
+                    : skill.level
+                    ? `${skill.name} (${skill.level})`
+                    : ""}
+                </div>
               ))}
-            </ul>
-          </div>
+            </div>
+          </section>
         )}
 
-        {/* ===== EXPERIENCE ===== */}
+        {/* EXPERIENCE */}
         {experience.length > 0 && (
-          <div className="resume-section">
+          <section className="resume-section">
             <h2>Experience</h2>
-            <ul>
-              {experience.map((exp, i) => (
-                <li key={i} className="experience-item">
-                  <div className="exp-header">
-                    <strong>
-                      {exp.title} — {exp.company}
-                    </strong>
-                    <span className="duration">{exp.duration}</span>
+
+            {experience.map((exp, i) => (
+              <div className="experience-entry" key={i}>
+                <div className="entry-topline">
+                  <strong>
+                    {exp.title}
+                    {exp.company ? ` — ${exp.company}` : ""}
+                  </strong>
+                  <span>{exp.duration}</span>
+                </div>
+
+                {exp.description && (
+                  <div className="entry-description">
+                    {exp.description.split("\n").map((line, j) => (
+                      <div key={j} className="description-line">
+                        {line.trim() && !/^[•\-]/.test(line.trim()) && (
+                          <span className="bullet">• </span>
+                        )}
+                        {line.replace(/^[•\-]\s*/, "")}
+                      </div>
+                    ))}
                   </div>
-                  {exp.description && (
-                    <div className="exp-desc">{exp.description}</div>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
+                )}
+              </div>
+            ))}
+          </section>
         )}
 
-        {/* ===== PROJECTS ===== */}
+        {/* PROJECTS */}
         {projects.length > 0 && (
-          <div className="resume-section">
-            <h2 className="projects-title">Projects</h2>
-            <ul className="projects-list">
-              {projects.map((proj, i) => (
-                <li key={i} className="project-item">
-                  <div className="project-header">
-                    <strong className="project-title">{proj.title}</strong>
-                    {proj.link && (
-                      <a
-                        href={proj.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="project-link"
-                      >
-                        [Link]
-                      </a>
-                    )}
+          <section className="resume-section">
+            <h2>Projects</h2>
+
+            {projects.map((proj, i) => (
+              <div className="project-entry" key={i}>
+                <div className="entry-topline">
+                  <strong>{proj.title}</strong>
+                  <span>{proj.duration || proj.date || ""}</span>
+                </div>
+
+                {proj.link && (
+                  <a
+                    className="resume-project-link"
+                    href={proj.link}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {formatLink(proj.link)}
+                  </a>
+                )}
+
+                {proj.description && (
+                  <div className="project-description">
+                    {proj.description.split("\n").map((line, j) => {
+                      const match = line.match(
+                        /^(Problem|Objective|Outcome|Tech|Technologies|Role):\s*/i
+                      );
+
+                      return (
+                        <p key={j}>
+                          {match && <strong>{match[1]}: </strong>}
+                          {match
+                            ? line.slice(match[0].length)
+                            : line.replace(/^[•\-]\s*/, "")}
+                        </p>
+                      );
+                    })}
                   </div>
-                  <p className="project-desc">{proj.description}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
+                )}
+              </div>
+            ))}
+          </section>
         )}
 
-  
-{certificates.length > 0 && (
-  <div className="resume-section">
-    <h2>Certificates</h2>
-    <ul>
-      {certificates.map((cert, i) => (
-        <li key={i} className="certificate-item">
-          <strong>{cert.name}</strong> — {cert.organization} ({cert.year})
-          {cert.link && (
-            <a
-              href={cert.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cert-link"
-            >
-              [View]
-            </a>
-          )}
-        </li>
-      ))}
-    </ul>
-  </div>
-)}
+        {/* CERTIFICATES */}
+        {certificates.length > 0 && (
+          <section className="resume-section">
+            <h2>Certificates</h2>
 
-{formData.references && formData.references.length > 0 && (
-  <div className="resume-section">
-    <h2>References</h2>
-    <ul className="reference-list">
-      {formData.references.map((ref, i) => (
-        <li key={i} className="reference-item">
-          <strong>{ref.name}</strong> — {ref.position}, {ref.company}
-          <br />
-          <span className="ref-contact">
-            {ref.email && <span>{ref.email}</span>}
-            {ref.phone && <> | {ref.phone}</>}
-          </span>
-        </li>
-      ))}
-    </ul>
-  </div>
-)}
+            {certificates.map((cert, i) => (
+              <div className="certificate-entry" key={i}>
+                <strong>{cert.name}</strong>
+                {cert.organization && (
+                  <span className="certificate-org">
+                    {" "}
+                    — {cert.organization}
+                  </span>
+                )}
+                {cert.year && <span> ({cert.year})</span>}
+                {cert.link && (
+                  <>
+                    {" "}
+                    <a href={cert.link} target="_blank" rel="noreferrer">
+                      [View]
+                    </a>
+                  </>
+                )}
+              </div>
+            ))}
+          </section>
+        )}
 
+        {/* REFERENCES */}
+        {formData.references?.length > 0 && (
+          <section className="resume-section">
+            <h2>References</h2>
 
+            {formData.references.map((ref, i) => (
+              <div className="reference-entry" key={i}>
+                <strong>{ref.name}</strong>
+                {ref.position && ` — ${ref.position}`}
+                {ref.company && `, ${ref.company}`}
+                <div>
+                  {[ref.email, ref.phone].filter(Boolean).join(" | ")}
+                </div>
+              </div>
+            ))}
+          </section>
+        )}
       </div>
     </div>
   );
