@@ -36,7 +36,8 @@
 .resume-header h1 {
   font-size: 1.7rem;
   font-weight: 700;
-  margin: 0 0 4px 0;
+  margin: 0 0 2px 0;
+  line-height: 1.2;
   color: #1f3a6e;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -53,6 +54,12 @@
 .resume-header p p {
   font-weight: 600;
   color: #222;
+  margin: 0;
+}
+
+/* removes the extra blank line coming from <br /> in the header */
+.resume-header br {
+  display: none;
 }
 
 .personal-links {
